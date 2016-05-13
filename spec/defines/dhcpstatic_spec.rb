@@ -10,7 +10,7 @@ describe 'dnsmasq::dhcpstatic', :type => 'define' do
 
   context 'with no params' do
     it 'should raise error due no params' do
-      expect { should compile }.to raise_error(Puppet::Error,/Must pass/)
+      is_expected.to raise_error(Puppet::Error, /Must pass/)
     end
   end
 
@@ -23,7 +23,7 @@ describe 'dnsmasq::dhcpstatic', :type => 'define' do
       should contain_class('dnsmasq')
       should contain_concat__fragment('dnsmasq-staticdhcp-example.com'
                                      ).with(
-        :order   => '04',
+        :order   => '05',
         :target  => 'dnsmasq.conf',
         :content => "dhcp-host=4c:72:b9:31:8c:b9,192.168.0.4,example.com\n",
       )

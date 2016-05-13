@@ -10,7 +10,7 @@ describe 'dnsmasq::srv', :type => 'define' do
 
   context 'with no params' do
     it 'should raise error due no params' do
-      expect { should compile }.to raise_error(Puppet::Error,/Must pass/)
+      is_expected.to raise_error(Puppet::Error, /Must pass/)
     end
   end
 
@@ -23,7 +23,7 @@ describe 'dnsmasq::srv', :type => 'define' do
       should contain_class('dnsmasq')
       should contain_concat__fragment(
         'dnsmasq-srv-_xmpp-server._tcp.example.com').with(
-        :order   => '08',
+        :order   => '09',
         :target  => 'dnsmasq.conf',
         :content => "srv-host=_xmpp-server._tcp.example.com,example.com,5333\n",
       )
@@ -40,7 +40,7 @@ describe 'dnsmasq::srv', :type => 'define' do
       should contain_class('dnsmasq')
       should contain_concat__fragment(
         'dnsmasq-srv-_xmpp-server._tcp.example.com').with(
-        :order   => '08',
+        :order   => '09',
         :target  => 'dnsmasq.conf',
         :content =>
         "srv-host=_xmpp-server._tcp.example.com,example.com,5333,10\n",

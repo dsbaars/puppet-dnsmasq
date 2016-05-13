@@ -10,7 +10,7 @@ describe 'dnsmasq::ptr', :type => 'define' do
 
   context 'with no params' do
     it 'should raise error due no params' do
-      expect { should compile }.to raise_error(Puppet::Error,/Must pass/)
+      is_expected.to raise_error(Puppet::Error, /Must pass/)
     end
   end
 
@@ -19,7 +19,7 @@ describe 'dnsmasq::ptr', :type => 'define' do
     it do
       should contain_class('dnsmasq')
       should contain_concat__fragment('dnsmasq-ptr-foo.com').with(
-        :order   => '09',
+        :order   => '10',
         :target  => 'dnsmasq.conf',
         :content => "ptr-record=foo.com,example.com\n",
       )

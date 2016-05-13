@@ -10,17 +10,20 @@ describe 'dnsmasq::dhcpoption', :type => 'define' do
 
   context 'with no params' do
     it 'should raise error due no params' do
-      expect { should compile }.to raise_error(Puppet::Error,/Must pass/)
+      is_expected.to raise_error(Puppet::Error, /Must pass/)
     end
   end
 
   context 'with minimal parms' do
-    let :params do { :content => '192.168.0.4' } end
+    let :params do {
+      :content => '192.168.0.4',
+      :option  => 'option:ntp-server'
+    } end
     it do
       should contain_class('dnsmasq')
       should contain_concat__fragment('dnsmasq-dhcpoption-option:ntp-server'
                                      ).with(
-        :order   => '02',
+        :order   => '03',
         :target  => 'dnsmasq.conf',
         :content => "dhcp-option=option:ntp-server,192.168.0.4\n",
       )
@@ -30,13 +33,14 @@ describe 'dnsmasq::dhcpoption', :type => 'define' do
   context 'with all parms' do
     let :params do {
       :content  => '192.168.0.4',
-      :tag => 'foo',
+      :tag      => 'foo',
+      :option   => 'option:ntp-server'
     } end
     it do
       should contain_class('dnsmasq')
       should contain_concat__fragment('dnsmasq-dhcpoption-option:ntp-server'
                                      ).with(
-        :order   => '02',
+        :order   => '03',
         :target  => 'dnsmasq.conf',
         :content => "dhcp-option=tag:foo,option:ntp-server,192.168.0.4\n",
       )

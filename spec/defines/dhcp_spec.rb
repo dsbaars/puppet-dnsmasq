@@ -10,7 +10,7 @@ describe 'dnsmasq::dhcp', :type => 'define' do
 
   context 'with no params' do
     it 'should raise error due no params' do
-      expect { should compile }.to raise_error(Puppet::Error,/Must pass/)
+      is_expected.to raise_error(Puppet::Error, /Must pass/)
     end
   end
 
