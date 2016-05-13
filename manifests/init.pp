@@ -89,7 +89,7 @@ class dnsmasq (
 
   $provider_real = empty($custom_provider) ? {
     true    => $dnsmasq_package_provider ? {
-      undef   => $::provider,
+      undef   => $custom_provider,
       default => $dnsmasq_package_provider,
     },
     default => $dnsmasq_package_provider,
