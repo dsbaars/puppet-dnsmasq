@@ -8,12 +8,6 @@ describe 'dnsmasq::cname', :type => 'define' do
     :operatingsystem => 'Debian'
   } end
 
-  context 'with no params' do
-    it 'should raise error due no params' do
-      is_expected.to raise_error(Puppet::Error, /Must pass/)
-    end
-  end
-
   context 'with hostname' do
     let :params do { :hostname => 'example.com' } end
     it do

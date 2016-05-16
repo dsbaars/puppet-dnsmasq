@@ -8,12 +8,6 @@ describe 'dnsmasq::dnsserver', :type => 'define' do
     :operatingsystem => 'Debian'
   } end
 
-  context 'with no params' do
-    it 'should raise error due no params' do
-      is_expected.to raise_error(Puppet::Error, /Must pass/)
-    end
-  end
-
   context 'with minimal params' do
     let :params do { :ip => '192.168.0.4' } end
     it do

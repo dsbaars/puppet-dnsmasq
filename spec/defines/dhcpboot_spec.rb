@@ -8,12 +8,6 @@ describe 'dnsmasq::dhcpboot', :type => 'define' do
     :operatingsystem => 'Debian'
   } end
 
-  context 'with no params' do
-    it 'should raise error due no params' do
-      is_expected.to raise_error(Puppet::Error, /Must pass/)
-    end
-  end
-
   context 'with minimal params' do
     let :params do {
       :file => '/foo',

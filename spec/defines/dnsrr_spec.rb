@@ -8,12 +8,6 @@ describe 'dnsmasq::dnsrr', :type => 'define' do
     :operatingsystem => 'Debian'
   } end
 
-  context 'with no params' do
-    it 'should raise error due no params' do
-      is_expected.to raise_error(Puppet::Error, /Must pass/)
-    end
-  end
-
   context 'with params' do
     let :params do {
       :domain => 'example.com',
